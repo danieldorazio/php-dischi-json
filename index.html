@@ -26,7 +26,7 @@
 
             <main>
                 <div class="row">
-                    <div class="col" v-for="(disco, index) in dischiList">
+                    <div class="col" v-for="(disco, index) in dischiList" @click="getSingleDisk(index)">
                         <div class="card">
                             <img  class="img-card" :src="disco.poster" alt="">
                             <h3> {{ disco.title}}</h3>
@@ -34,6 +34,11 @@
                             <h4> {{disco.year}} </h4>
                         </div>
                     </div>
+                </div>
+                <div class="dialog" v-if="showDisk">
+                    <button class="close" @click="closeDialog"> X </button>
+                    <img :src="selectedDisk.poster" alt="">
+                    <h3> {{ selectedDisk.title }} </h3>
                 </div>
             </main>
         </div>
